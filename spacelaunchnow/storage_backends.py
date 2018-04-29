@@ -5,3 +5,7 @@ from spacelaunchnow import settings
 class LogoStorage(S3Boto3Storage):
     location = settings.LOGO_LOCATION
     file_overwrite = True
+
+class ImageStorage(S3Boto3Storage):
+    location = settings.IMAGE_LOCATION
+    file_overwrite = True

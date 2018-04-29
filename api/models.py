@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from spacelaunchnow.storage_backends import LogoStorage
+from spacelaunchnow.storage_backends import LogoStorage, ImageStorage
 
 # The Agency object is meant to define a agency that operates launchers and orbiters.
 #
@@ -25,7 +25,8 @@ class Agency(models.Model):
     description = models.CharField(max_length=2048, blank=True, null=True, default=None)
     launchers = models.CharField(max_length=500, default='', blank=True)
     orbiters = models.CharField(max_length=500, default='', blank=True)
-    image_url = models.URLField(blank=True, null=True, default=None)
+    image_url = models.FileField(blank=True, null=True, default=None, storage=ImageStorage())
+    legacy_image_url = models.URLField(blank=True, null=True, default=None)
     nation_url = models.URLField(blank=True, null=True, default=None)
     ceo = models.CharField(max_length=200, blank=True, null=True, default=None)
     founding_year = models.CharField(blank=True, null=True, default=None, max_length=20)

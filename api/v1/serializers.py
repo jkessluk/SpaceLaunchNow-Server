@@ -28,14 +28,22 @@ class AgencySerializer(serializers.HyperlinkedModelSerializer):
     launcher_list = LauncherModelSerializer(many=True, read_only=True)
     orbiter_list = OrbiterModelSerializer(many=True, read_only=True)
     agency = serializers.SerializerMethodField('get_alternate_name')
+    image_url = serializers.SerializerMethodField('get_old_image_url')
+
 
     class Meta:
         model = Agency
+        model.image_url = model.legacy_image_url
         fields = ('url', 'agency', 'launchers', 'orbiters', 'launcher_list', 'orbiter_list', 'description', 'image_url',
                   'nation_url')
 
+
+
     def get_alternate_name(self, obj):
         return obj.name
+
+    def get_old_image_url(self, obj):
+        return obj.legacy_image_url
 
 
 class LauncherDetailSerializer(serializers.HyperlinkedModelSerializer):

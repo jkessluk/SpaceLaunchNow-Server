@@ -242,3 +242,6 @@ STATIC_URL_AWS = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 LOGO_LOCATION = 'Logos'  # type: str
 LOGO_STORAGE = 'spacelaunchnow.storage_backends.LogoStorage'
+
+IMAGE_LOCATION = 'Images'  # type: str
+IMAGE_STORAGE = 'spacelaunchnow.storage_backends.ImageStorage'
